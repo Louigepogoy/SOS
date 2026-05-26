@@ -59,6 +59,16 @@ All application code lives in `student-organization-management/`. The parent `SO
    ```
 4. Open http://127.0.0.1:8000
 
+## Authentication (Login / Register)
+
+- **Login** → redirects to `/dashboard` (not `/home`)
+- **Register** → creates a student account; on local/XAMPP, email is auto-verified (no mail server needed)
+- **Forgot password** → works with `MAIL_MAILER=log` (check `storage/logs/laravel.log` for reset links on local)
+- Deactivated accounts cannot log in
+- All auth pages use a dedicated guest layout
+
+If login fails after registering, run: `php artisan migrate` (verifies existing users) and `php artisan config:clear`.
+
 ## Demo Accounts
 
 | Role        | Email             | Password  |

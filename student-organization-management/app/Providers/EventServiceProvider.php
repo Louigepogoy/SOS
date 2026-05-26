@@ -27,6 +27,8 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        if (app()->environment('local')) {
+            Event::forget(Registered::class);
+        }
     }
 }

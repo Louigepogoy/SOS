@@ -82,4 +82,13 @@ class User extends Authenticatable implements MustVerifyEmail
 
         return 'https://ui-avatars.com/api/?name=' . urlencode($this->name) . '&background=4f46e5&color=fff';
     }
+
+    public function sendEmailVerificationNotification()
+    {
+        if (app()->environment('local')) {
+            return;
+        }
+
+        parent::sendEmailVerificationNotification();
+    }
 }
